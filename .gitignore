@@ -6,3 +6,4 @@ venv/
 *.egg-info/
 .env
 diff.txt
+test_main.py
