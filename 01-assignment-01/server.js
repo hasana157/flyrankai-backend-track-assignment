@@ -151,6 +151,10 @@ app.use((error, _request, response, _next) => {
   return response.status(500).json({ error: "Internal server error" });
 });
 
-app.listen(port, () => {
-  console.log(`Task API listening at http://localhost:${port}`);
-});
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Task API listening at http://localhost:${port}`);
+  });
+}
+
+module.exports = app;

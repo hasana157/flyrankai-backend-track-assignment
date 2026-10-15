@@ -61,6 +61,12 @@ Content-Type: application/json; charset=utf-8
 
 You can also open `/docs` and use **Try it out** for the full CRUD cycle.
 
+Run the automated endpoint checks with:
+
+```powershell
+npm test
+```
+
 ## In-memory behavior
 
 The three example tasks are created when the server starts. Create a task and

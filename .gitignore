@@ -7,7 +7,7 @@ venv/
 .env
 diff.txt
 test_main.py
+node_modules/
 *.db
 *.db-shm
 *.db-wal
-node_modules/

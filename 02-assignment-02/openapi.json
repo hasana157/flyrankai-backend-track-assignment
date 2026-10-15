@@ -1,0 +1,108 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Task API",
+    "description": "The Assignment 1 Express task API with SQLite persistence.",
+    "version": "1.0.0"
+  },
+  "servers": [{ "url": "http://localhost:3000" }],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get API information",
+        "responses": { "200": { "description": "API name, version, and endpoints" } }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Check whether the API is running",
+        "responses": { "200": { "description": "Health status" } }
+      }
+    },
+    "/tasks": {
+      "get": {
+        "summary": "List tasks",
+        "parameters": [
+          { "name": "done", "in": "query", "schema": { "type": "boolean" } },
+          { "name": "search", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": { "200": { "description": "Task list" } }
+      },
+      "post": {
+        "summary": "Create a task",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["title"],
+                "properties": { "title": { "type": "string", "minLength": 1 } }
+              },
+              "example": { "title": "Buy milk" }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Created task" },
+          "400": { "description": "Invalid task input" }
+        }
+      }
+    },
+    "/tasks/{id}": {
+      "parameters": [
+        { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+      ],
+      "get": {
+        "summary": "Get one task",
+        "responses": {
+          "200": { "description": "Task" },
+          "404": { "description": "Task not found" }
+        }
+      },
+      "put": {
+        "summary": "Update a task",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "minProperties": 1,
+                "properties": {
+                  "title": { "type": "string", "minLength": 1 },
+                  "done": { "type": "boolean" }
+                }
+              },
+              "example": { "title": "Buy organic milk", "done": true }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Updated task" },
+          "400": { "description": "Invalid task input" },
+          "404": { "description": "Task not found" }
+        }
+      },
+      "delete": {
+        "summary": "Delete a task",
+        "responses": {
+          "204": { "description": "Task deleted; response has no body" },
+          "404": { "description": "Task not found" }
+        }
+      }
+    },
+    "/stats": {
+      "get": {
+        "summary": "Get task statistics",
+        "responses": { "200": { "description": "Task counts" } }
+      }
+    },
+    "/reset": {
+      "post": {
+        "summary": "Restore the example tasks",
+        "responses": { "200": { "description": "Reset task list" } }
+      }
+    }
+  }
+}

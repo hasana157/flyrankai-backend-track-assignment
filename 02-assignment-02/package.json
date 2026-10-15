@@ -1,0 +1,16 @@
+{
+  "name": "flyrank-assignment-02",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Assignment 2: the Express task API backed by SQLite",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.2.0",
+    "express": "^5.1.0",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
