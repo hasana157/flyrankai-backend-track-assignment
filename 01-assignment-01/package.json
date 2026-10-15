@@ -1,0 +1,14 @@
+{
+  "name": "flyrank-assignment-01",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An in-memory task CRUD API built with Express for FlyRank Backend Track Assignment 1",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
